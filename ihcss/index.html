@@ -2,21 +2,110 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="css/styles.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Fira+Code:wght@300;500&family=Roboto+Slab:wght@500&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/ico" href="favicon.ico"/>
     <title>Imersão CSS</title>
 </head>
 <body>
-
     <header>
         <nav class="menu">
             <ul>
                 <li><a href="#">Sobre</a></li>
-                <li><a href="#">Portfólio</a></li>
+                <li><a href="#">Projetos</a></li>
                 <li><a href="#">Contato</a></li>
             </ul>
         </nav>
-        <h1 class="site-title">Guilherme A. Novelleto</h1>
-        <h2 class="site-subtitle">Jr Dev </h2>
+        <script>          
+          var TxtRotate = function(el, toRotate, period) {
+            this.toRotate = toRotate;
+            this.el = el;
+            this.loopNum = 0;
+            this.period = parseInt(period, 10) || 2000;
+            this.txt = '';
+            this.tick();
+            this.isDeleting = false;
+          };
+  
+          TxtRotate.prototype.tick = function() {
+            var i = this.loopNum % this.toRotate.length;
+            var fullTxt = this.toRotate[i];
+          
+            if (this.isDeleting) {
+              this.txt = fullTxt.substring(0, this.txt.length - 1);
+            } else {
+              this.txt = fullTxt.substring(0, this.txt.length + 1);
+            }
+          
+            this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+          
+            var that = this;
+            var delta = 300 - Math.random() * 100;
+          
+            if (this.isDeleting) { delta /= 2; }
+          
+            if (!this.isDeleting && this.txt === fullTxt) {
+              delta = this.period;
+              this.isDeleting = true;
+            } else if (this.isDeleting && this.txt === '') {
+              this.isDeleting = false;
+              this.loopNum++;
+              delta = 500;
+            }
+          
+            setTimeout(function() {
+              that.tick();
+            }, delta);
+          };
+          
+          window.onload = function() {
+            var elements = document.getElementsByClassName('txt-rotate');
+            for (var i=0; i<elements.length; i++) {
+              var toRotate = elements[i].getAttribute('data-rotate');
+              var period = elements[i].getAttribute('data-period');
+              if (toRotate) {
+                new TxtRotate(elements[i], JSON.parse(toRotate), period);
+              }
+            }
+          };
+        </script>
+        <div>
+            <h1 class="site-title">Guilherme A. Novelleto <img class="img-fluid img-body rounded-circle mx-auto mb-2" src="../img/profile.jpg" alt="imagem do Guilherme sorrindo">
+            </h1>
+            <h2 class="site-subtitle">Jr Developer 
+            <span class="txt-rotate"
+              data-period="1800"
+              data-rotate='[ "Python.", "Node.JS.", "ReactJS.", "React Native.", "FullStack!" ]'>
+            </span>   
+            </h2>
+        </div>
     </header>
+    <section class="portfolio">
+        <h2>Projetos</h2>
+        <div class="grid">
+        <figure>
+          <img class="img-portfolio" src="./image/portfolio1.jpg" alt="eCommerce">
+          <figcaption>eCommerce</figcaption>
+        </figure>
+        <figure>
+          <img class="img-portfolio" src="./image/portfolio1.jpg" alt=">Mobile">
+          <figcaption>Mobile</figcaption>
+        </figure>
+        <figure>
+          <img class="img-portfolio" src="./image/portfolio1.jpg" alt="Web design">
+          <figcaption>Web design</figcaption>
+        </figure>
+        <figure>
+          <img class="img-portfolio" src="./image/portfolio1.jpg" alt="Projetos pessoais">
+          <figcaption>Projetos pessoais</figcaption>
+        </figure>
+        <figure>
+          <img class="img-portfolio" src="./image/portfolio1.jpg" alt="Projetos pessoais">
+          <figcaption>Projetos pessoais</figcaption>
+        </figure>
+      </div>
+      </section>
+          
 </body>
 </html>

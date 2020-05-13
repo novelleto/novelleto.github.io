@@ -1,17 +1,104 @@
-body {
-  background-image: url("../image/background.jpg");
-  background-size: auto 100vh; 
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover; 
-  height: 100vh;
-  font-family: Roboto;
-
+/** Soft Reset do css **/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+body {
+  background-color: #e1e8ed; 
+  height: 100vh;
+  font-family: 'Roboto Slab', serif;
+}
+
+@media (min-width: 450px) {
+  body{
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 600px) {
+  body{
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1200px) {
+  body{
+    font-size: 20px;
+  }
+}
+
+header {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.typewriter {
+  font-family: 'Fira Code', monospace;
+  display: inline-block;
+}
+
+.typewriter-text {
+  display: inline-block;
+  overflow: hidden;
+  animation: typing 5s steps(30, end), blink .75s step-end infinite;
+  white-space: nowrap;
+  font-weight: 700;
+  border-right: 4px solid #f3952f;
+  box-sizing: border-box;
+}
+
+@keyframes typing {
+  from { 
+      width: 0% 
+  }
+  to { 
+      width: 100% 
+  }
+}
+
+@keyframes blink {
+  from, to { 
+      border-color: transparent 
+  }
+  50% { 
+      border-color: #f3952f; 
+  }
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+.rounded-circle {
+  border-radius: 50% !important;
+}
+
+.img-body {
+  display: inline-block;
+  height: 4.0rem;
+  width: 4.0rem;
+  vertical-align: middle;
+  text-align: baseline;
+  font-size: 2.5rem;
+  line-height: 1.5rem;
+  margin-right: 0.1rem;
+}
 
 .menu {
-  background-color: white;
+  background-color: #ffffff;
+  position: fixed;
+  width: 100vw;
+  top: 0;
+}
+
+.menu a {
+  display: block;
+  padding: 10px 10px;
 }
 
 .menu ul {
@@ -20,24 +107,85 @@ body {
 }
 
 a {
-  color: teal;
+  color: #0e6ebe;
   text-decoration: none;
 }
 
 a:hover {
   text-decoration: underline;
+  color: #f3952f;
 }
 
 .menu li {
   list-style: none;
 }
 
-.site-subtitle,
 .site-title {
   text-align: center;
   color: #0e6ebe;
 }
-
+.site-title{
+  font-family: 'Amatic SC', cursive;
+  font-size: 4em;
+  
+}
 .site-subtitle {
+  text-align: center;
   font-style: italic;
+  font-family: 'Fira Code', monospace;
+  line-height: 0.7em;
+  color: #f3952f;
+  padding: 1em;
+  border: 0.5em;
+  line-height: 1em;
+}
+.portfolio {
+  padding: 2em;
+  height: 100vh;
+}
+.portfolio h2 {
+  font-family: 'Fira Code', monospace;
+  color: #004369;
+  margin-bottom: 1em;
+}
+
+.portfolio .grid {
+  display: grid;
+  gap: 1em;
+}
+
+@media (min-width: 560px) {
+  .portfolio .grid {
+    grid-template-columns: 240px 240px;
+  }
+}
+
+
+@media (min-width: 715px) {
+  .portfolio .grid {
+    grid-template-columns: repeat(3, 240px);
+    justify-content: center;
+    align-content: center;
+    height: calc(100vh - 2em - 48px - 0.7);
+  }
+}
+
+
+.portfolio figure{
+  text-align: center;
+}
+
+.img-portfolio {
+  height: 160px;
+  width: 200px;
+  object-fit: cover;
+  object-position: bottom left; 
+
+}
+
+@media (min-width: 1000px) {
+  .img-portfolio {
+    height: auto;
+    width: 100%;  
+  }
 }
