@@ -1,0 +1,39 @@
+body {
+  background: #0e6ebe;
+  /** background-image: url("");
+      background-size: auto (largura) 100vh(altura)    **/
+  height: 100vh;
+  font-family: Arial;
+}
+
+.menu {
+  background-color: white;
+}
+
+.menu ul {
+  display: flex;
+  justify-content: space-around;
+}
+
+a {
+  color: teal;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.menu li {
+  list-style: none;
+}
+
+.site-subtitle,
+.site-title {
+  text-align: center;
+  color: #A7E66E;
+}
+
+.site-subtitle {
+  font-style: italic;
+}
