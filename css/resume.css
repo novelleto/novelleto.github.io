@@ -31,8 +31,8 @@ h6 {
 }
 
 h1 {
-  font-size: 5.5rem;
-  line-height: 5rem;
+  font-size: 5rem;
+  line-height: 4rem;
 }
 
 h2 {
@@ -185,7 +185,7 @@ a:hover, a:focus, a:active {
   height: 4.0rem;
   width: 4.0rem;
   vertical-align: baseline;
-  text-align: baseline;
+  text-align: center;
   font-size: 2.5rem;
   line-height: 1.5rem;
   margin-right: 0.1rem;
