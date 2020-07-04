@@ -6,70 +6,71 @@
     <link href="css/styles.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Fira+Code:wght@300;500&family=Roboto+Slab:wght@500&display=swap" rel="stylesheet">
     <link rel="shortcut icon" type="image/ico" href="favicon.ico"/>
+    <script src="https://kit.fontawesome.com/574a0e6acc.js" crossorigin="anonymous"></script>
+    <script>          
+      var TxtRotate = function(el, toRotate, period) {
+        this.toRotate = toRotate;
+        this.el = el;
+        this.loopNum = 0;
+        this.period = parseInt(period, 10) || 2000;
+        this.txt = '';
+        this.tick();
+        this.isDeleting = false;
+      };
+
+      TxtRotate.prototype.tick = function() {
+        var i = this.loopNum % this.toRotate.length;
+        var fullTxt = this.toRotate[i];
+      
+        if (this.isDeleting) {
+          this.txt = fullTxt.substring(0, this.txt.length - 1);
+        } else {
+          this.txt = fullTxt.substring(0, this.txt.length + 1);
+        }
+      
+        this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+      
+        var that = this;
+        var delta = 300 - Math.random() * 100;
+      
+        if (this.isDeleting) { delta /= 2; }
+      
+        if (!this.isDeleting && this.txt === fullTxt) {
+          delta = this.period;
+          this.isDeleting = true;
+        } else if (this.isDeleting && this.txt === '') {
+          this.isDeleting = false;
+          this.loopNum++;
+          delta = 500;
+        }
+      
+        setTimeout(function() {
+          that.tick();
+        }, delta);
+      };
+      
+      window.onload = function() {
+        var elements = document.getElementsByClassName('txt-rotate');
+        for (var i=0; i<elements.length; i++) {
+          var toRotate = elements[i].getAttribute('data-rotate');
+          var period = elements[i].getAttribute('data-period');
+          if (toRotate) {
+            new TxtRotate(elements[i], JSON.parse(toRotate), period);
+          }
+        }
+      };
+    </script>
     <title>Imersão CSS</title>
 </head>
 <body>
     <header>
-        <nav class="menu">
+        <nav class="menu container">
             <ul>
-                <li><a href="#">Sobre</a></li>
-                <li><a href="#">Projetos</a></li>
-                <li><a href="#">Contato</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#knoledge">Knoledge</a></li>
+                <li><a href="#">Contact</a></li>
             </ul>
         </nav>
-        <script>          
-          var TxtRotate = function(el, toRotate, period) {
-            this.toRotate = toRotate;
-            this.el = el;
-            this.loopNum = 0;
-            this.period = parseInt(period, 10) || 2000;
-            this.txt = '';
-            this.tick();
-            this.isDeleting = false;
-          };
-  
-          TxtRotate.prototype.tick = function() {
-            var i = this.loopNum % this.toRotate.length;
-            var fullTxt = this.toRotate[i];
-          
-            if (this.isDeleting) {
-              this.txt = fullTxt.substring(0, this.txt.length - 1);
-            } else {
-              this.txt = fullTxt.substring(0, this.txt.length + 1);
-            }
-          
-            this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
-          
-            var that = this;
-            var delta = 300 - Math.random() * 100;
-          
-            if (this.isDeleting) { delta /= 2; }
-          
-            if (!this.isDeleting && this.txt === fullTxt) {
-              delta = this.period;
-              this.isDeleting = true;
-            } else if (this.isDeleting && this.txt === '') {
-              this.isDeleting = false;
-              this.loopNum++;
-              delta = 500;
-            }
-          
-            setTimeout(function() {
-              that.tick();
-            }, delta);
-          };
-          
-          window.onload = function() {
-            var elements = document.getElementsByClassName('txt-rotate');
-            for (var i=0; i<elements.length; i++) {
-              var toRotate = elements[i].getAttribute('data-rotate');
-              var period = elements[i].getAttribute('data-period');
-              if (toRotate) {
-                new TxtRotate(elements[i], JSON.parse(toRotate), period);
-              }
-            }
-          };
-        </script>
         <div>
             <h1 class="site-title">Guilherme A. Novelleto <img class="img-fluid img-body rounded-circle mx-auto mb-2" src="../img/profile.jpg" alt="imagem do Guilherme sorrindo">
             </h1>
@@ -81,13 +82,30 @@
             </h2>
         </div>
     </header>
-    <section class="portfolio">
-        <h2>Projetos</h2>
+    <section class="sobre container">
+      <h2>Sobre</h2>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur aliquid debitis voluptatum maiores minus, magnam animi ab sed tempore officia sequi nesciunt dolorum ad molestias consequuntur. Asperiores qui non suscipit.Modi nam sint et ab esse. 
+      </p>
+      <p>Nostrum unde alias maxime eius hic iure nobis magnam atque non ex tenetur a earum voluptates facilis doloribus fugit quod quo, placeat fugiat quidem.
+      </p>
+      <p>Este site foi criado durante a <a href="https://www.alura.com.br/imersao-css">#ImerssãoCSS da Alura</a>
+      </p>
+
+    </section>
+    <section class="portfolio container" id="knoledge">
+        <h2>Knoledge</h2>
         <div class="grid">
-        <figure>
-          <img class="img-portfolio" src="./image/portfolio1.jpg" alt="eCommerce">
-          <figcaption>eCommerce</figcaption>
-        </figure>
+          <div class="flip-card">
+            <div class="card">
+            <figure class="card-front">
+              <img class="img-portfolio" src="./image/portfolio1.jpg" alt="eCommerce">
+            <figcaption>eCommerce</figcaption>
+            </figure>
+            <div class="card-back">
+              Oi eu sou a parte de trás 
+            </div>
+            </div>
+          </div>
         <figure>
           <img class="img-portfolio" src="./image/portfolio1.jpg" alt=">Mobile">
           <figcaption>Mobile</figcaption>
@@ -105,6 +123,26 @@
           <figcaption>Projetos pessoais</figcaption>
         </figure>
       </div>
+      </section>
+      <section class="contato container">
+        <h2>Contato</h2>
+        <div class="grid icons">
+          <a target="_blank" href="https://github.com/novelleto">
+            <i class="fab fa-github-square"></i>
+          </a>
+          <a target="_blank" href="https://twitter.com/GNovelleto">
+            <i class="fab fa-twitter-square"></i>
+          </a>
+          <a target="_blank" href="https://linkedin.com/in/guilhermenovelleto">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a target="_blank" href="https://www.instagram.com/letsio.servicos/">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="mailto:guilherme.novelleto@letsio.com.br">
+            <i class="far fa-envelope"></i>
+          </a>
+        </div>
       </section>
           
 </body>
