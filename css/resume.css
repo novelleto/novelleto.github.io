@@ -91,7 +91,7 @@ p.lead {
 }
 
 #sideNav .navbar-toggler:focus {
-  outline-color: #0E6EBE;
+  outline-color: #0a0903;
 }
 
 @media (min-width: 992px) {
@@ -161,7 +161,7 @@ section.resume-section .resume-item .resume-date {
 }
 
 .bg-primary {
-  background-color: #0E6EBE !important;
+  background-color: #0a0903 !important;
 }
 
 .text-name {
